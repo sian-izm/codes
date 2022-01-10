@@ -7,3 +7,8 @@ function testFunc(message: string, count?: number) {
   return message!;
 }
 console.log(testFunc(message, 1))
+
+export default class TestTarget {
+  constructor(public name){
+  }
+}
