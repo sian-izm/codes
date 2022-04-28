@@ -12,5 +12,10 @@
   },
   "dependencies": {
     "typescript": "^4.6.3"
-  }
+  },
+  "exclude": [
+    "./tests/",
+    "./node_modules/",
+    "./dist/"
+  ],
 }
