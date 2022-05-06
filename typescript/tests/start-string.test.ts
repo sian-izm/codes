@@ -16,5 +16,5 @@ describe("start-string", () => {
   });
   it("should return string by string dictionary", () =>{
     expect(start({s: "Mogo"})).to.equal("Mogo");
-  });  
+  });
 })
