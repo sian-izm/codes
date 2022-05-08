@@ -4,6 +4,6 @@ import { uppercase } from "../src/uppercase";
 describe("uppercase", () => {
   it("should return uppercase", () => {
     const str = "hogehoge";
-    expect(uppercase(str)).to.equal("Hogehoge");
+    expect(uppercase("hogehoge")).to.equal("HOGEHOGE");
   })
 })
