@@ -1,8 +1,9 @@
 type DescribableFunction = {
   description: string;
-  (someArg: number): boolean;
+  someProperty: (someArg: number) => boolean;
+};
+
+export function doSomething(fn: DescribableFunction): string {
+  return fn.description + " returned " + fn.someProperty(6);
 }
 
-export function doSomething(fn: DescribableFunction) {
-  return fn.description + " returned " + fn(6);
-}
