@@ -12,6 +12,6 @@ export class MadeFromString implements ComesFromString {
   }
 }
 
-function makeObj(n: StringConstructable) {
+export function makeObj(n: StringConstructable) {
   return new n('hello');
 }
