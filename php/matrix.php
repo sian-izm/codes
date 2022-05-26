@@ -1,3 +1,4 @@
+<?php
 function _validate_matrix($m) {
 	if (!is_array($m)) {
 		return false;
@@ -24,3 +25,4 @@ function rotate_matrix_90($matrix) {
     }
     return $result;
 }
+?>
