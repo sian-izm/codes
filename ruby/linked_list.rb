@@ -43,9 +43,9 @@ class LinkedList
   def hash_nodes
     node = @head
     puts node
-    hash = {node.value.to_s => node.next&.value&.to_s}
+    hash = {node.value.to_s.to_sym => node.next&.value&.to_s}
     while node = node.next
-      hash[node.value.to_s] = node.next&.value&.to_s
+      hash[node.value.to_s.to_sym] = node.next&.value&.to_s
     end
     hash
   end

@@ -15,7 +15,7 @@ class TestLinkedList < Minitest::Test
     list.append(10)
     list.append(20)
     list.append(30)
-    hash = {'10'=>'20', '20'=>'30', '30'=>nil}
+    hash = {:'10'=>'20', :'20'=>'30', :'30'=>nil}
     assert_equal hash, list.hash_nodes
   end
 end
