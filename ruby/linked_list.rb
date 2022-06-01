@@ -20,8 +20,7 @@ class LinkedList
   end
 
   def append_after(target, value)
-    node = find(target)
-    return false unless node
+    return false unless node = find(target)
 
     old_next = node.next
     node.next = Node.new(value)
