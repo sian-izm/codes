@@ -20,9 +20,22 @@ class LinkedList
   end
 
   def append_after(target, value)
+    node = find(target)
+    return false unless node
+
+    old_next = node.next
+    node.next = Node.new(value)
+    node.next.next = old_next
   end
 
   def find(value)
+    node = @head
+
+    return unless node
+    return node if node.value == value
+    while node = node.next
+      return node if node.value == value
+    end
   end
 
   def delete(value)
@@ -42,7 +55,7 @@ class LinkedList
 
   def hash_nodes
     node = @head
-    puts node
+
     hash = {node.value.to_s.to_sym => node.next&.value&.to_s}
     while node = node.next
       hash[node.value.to_s.to_sym] = node.next&.value&.to_s
