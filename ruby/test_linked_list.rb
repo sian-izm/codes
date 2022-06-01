@@ -40,4 +40,18 @@ class TestLinkedList < Minitest::Test
     hash = {:'10'=>'30', :'30'=>'20', :'20'=>nil}
     assert_equal hash, list.hash_nodes
   end
+
+  def test_find_before
+    list = LinkedList.new
+    list.append(10)
+    assert_nil list.find_before(10)
+
+    list.append(20)
+    assert_equal 10, list.find_before(20).value
+    assert_nil list.find_before(30)
+
+    list.append(30)
+    assert_equal 10, list.find_before(20).value
+    assert_equal 20, list.find_before(30).value
+  end
 end

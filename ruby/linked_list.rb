@@ -41,6 +41,13 @@ class LinkedList
   end
 
   def find_before(value)
+    node = @head
+
+    return unless node.next
+    return node if node.next.value == value
+    while node = node.next
+      return node if node&.next&.value == value
+    end
   end
 
   def array_values
