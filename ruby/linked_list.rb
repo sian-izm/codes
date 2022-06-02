@@ -38,6 +38,17 @@ class LinkedList
   end
 
   def delete(value)
+    target = find(value)
+    return false unless target
+
+    before_node = find_before(value)
+    unless before_node
+      @head = @head.next
+      return true
+    end
+
+    before_node.next = target.next
+    return true
   end
 
   def find_before(value)
@@ -61,7 +72,7 @@ class LinkedList
 
   def hash_nodes
     node = @head
-
+    return {} unless node
     hash = {node.value.to_s.to_sym => node.next&.value&.to_s}
     while node = node.next
       hash[node.value.to_s.to_sym] = node.next&.value&.to_s

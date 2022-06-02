@@ -54,4 +54,32 @@ class TestLinkedList < Minitest::Test
     assert_equal 10, list.find_before(20).value
     assert_equal 20, list.find_before(30).value
   end
+
+  def test_delete_single_node
+    list = LinkedList.new
+    list.append(10)
+    assert_equal false, list.delete(20)
+    assert_equal true, list.delete(10)
+    assert_equal({}, list.hash_nodes)
+  end
+
+  def test_delete_mutiple_nodes
+    list = LinkedList.new
+    list.append(10)
+    list.append(20)
+    list.append(30)
+    assert_equal true, list.delete(20)
+    hash = {:'10'=>'30', :'30'=>nil}
+    assert_equal hash, list.hash_nodes
+  end
+
+  def test_delete_head_from_multiple_nodes
+    list = LinkedList.new
+    list.append(10)
+    list.append(20)
+    list.append(30)
+    assert_equal true, list.delete(10)
+    hash = {:'20'=>'30', :'30'=>nil}
+    assert_equal hash, list.hash_nodes
+  end
 end
