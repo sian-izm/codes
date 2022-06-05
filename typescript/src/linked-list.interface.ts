@@ -1,6 +1,6 @@
 import { Node } from './node';
 
-export interface ILinkedList<T> {
+export interface LinkedListInterface<T> {
   insertInBegin(data: T): Node<T>;
   insertAtEnd(data: T): Node<T>;
   deleteNode(node: Node<T>): void;
