@@ -16,6 +16,22 @@ export class LinkedList<T> implements LinkedListInterface<T> {
     return node;
   }
 
+  public insertAtEnd(data: T): Node<T> {
+    const node = new Node(data);
+    if (!this.head) {
+      this.head = node;
+    } else {
+      const getLast = (node: Node<T>): Node<T> => {
+        return node.next ? getLast(node.next) : node;
+      }
+
+      const lastNode = getLast(this.head);
+      lastNode.next = node;
+      node.prev = lastNode;
+    }
+    return node;
+  }
+
   public traverse(): T[] {
     const array: T[] = [];
     if (!this.head) {

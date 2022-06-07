@@ -11,6 +11,13 @@ describe("linked list", () => {
     const linkedList = new LinkedList<Post>();
     linkedList.insertInBegin({title: "Hogehoge"});
     linkedList.insertInBegin({title: "Mogomogo"});
-    expect(linkedList.traverse()).to.deep.equal([{title: "Mogomogo"}, { title: "Hogehoge"}])
-  })
+    expect(linkedList.traverse()).to.deep.equal([{title: "Mogomogo"}, { title: "Hogehoge"}]);
+  });
+
+  it('should insert at end', () => {
+    const linkedList = new LinkedList<Post>();
+    linkedList.insertAtEnd({title: "Hogehoge"});
+    linkedList.insertAtEnd({title: "Mogomogo"});
+    expect(linkedList.traverse()).to.deep.equal([{title: "Hogehoge"},{title: "Mogomogo"}]);
+  });
 })
