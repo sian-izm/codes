@@ -15,4 +15,16 @@ export class LinkedList<T> implements LinkedListInterface<T> {
     }
     return node;
   }
+
+  public traverse(): T[] {
+    const array: T[] = [];
+    if (!this.head) {
+      return array;
+    }
+    const addToArray = (node: Node<T>): T[] => {
+      array.push(node.data);
+      return node.next ? addToArray(node.next) : array;
+    };
+    return addToArray(this.head);
+  }
 }
