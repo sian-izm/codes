@@ -10,6 +10,7 @@ describe("linked list", () => {
   it('should insert in begin', () => {
     const linkedList = new LinkedList<Post>();
     linkedList.insertInBegin({title: "Hogehoge"});
-    expect(linkedList.traverse()).to.deep.equal([{ title: "Hogehoge"}])
+    linkedList.insertInBegin({title: "Mogomogo"});
+    expect(linkedList.traverse()).to.deep.equal([{title: "Mogomogo"}, { title: "Hogehoge"}])
   })
 })
