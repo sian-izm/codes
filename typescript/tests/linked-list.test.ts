@@ -27,4 +27,12 @@ describe("linked list", () => {
     linkedList.insertAtEnd({title: "Mogomogo"});
     expect(linkedList.size()).to.equal(2);
   });
+
+  it('should search node', () => {
+    const linkedList = new LinkedList<Post>();
+    linkedList.insertInBegin({title: "Hogehoge"});
+    linkedList.insertInBegin({title: "Mogomogo"});
+    linkedList.insertInBegin({title: "Fugafuga"});
+    expect(linkedList.search(({title}) => title === 'Mogomogo').data).to.deep.equal({ title: "Mogomogo" })
+  });
 })

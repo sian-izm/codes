@@ -6,5 +6,5 @@ export interface LinkedListInterface<T> {
   // deleteNode(node: Node<T>): void;
   traverse(): T[];
   size(): number;
-  // search(comparator: (data: T) => boolean): Node<T> | null;
+  search(comparator: (data: T) => boolean): Node<T> | null;
 }

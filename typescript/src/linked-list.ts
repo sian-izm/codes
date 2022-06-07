@@ -47,4 +47,14 @@ export class LinkedList<T> implements LinkedListInterface<T> {
   public size(): number {
     return this.traverse().length;
   }
+
+  public search(comparator: (data: T) => boolean): Node<T> | null {
+    const checkNext = (node: Node<T>): Node<T> | null => {
+      if (comparator(node.data)) {
+        return node;
+      }
+      return node.next ? checkNext(node.next) : null;
+    }
+    return this.head ? checkNext(this.head) : null;
+  }
 }
