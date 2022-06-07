@@ -43,4 +43,8 @@ export class LinkedList<T> implements LinkedListInterface<T> {
     };
     return addToArray(this.head);
   }
+
+  public size(): number {
+    return this.traverse().length;
+  }
 }

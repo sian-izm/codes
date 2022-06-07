@@ -20,4 +20,11 @@ describe("linked list", () => {
     linkedList.insertAtEnd({title: "Mogomogo"});
     expect(linkedList.traverse()).to.deep.equal([{title: "Hogehoge"},{title: "Mogomogo"}]);
   });
+
+  it('should insert at end', () => {
+    const linkedList = new LinkedList<Post>();
+    linkedList.insertAtEnd({title: "Hogehoge"});
+    linkedList.insertAtEnd({title: "Mogomogo"});
+    expect(linkedList.size()).to.equal(2);
+  });
 })
