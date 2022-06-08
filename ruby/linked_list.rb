@@ -51,6 +51,9 @@ class LinkedList
     return true
   end
 
+  def self.detectLoop
+  end
+
   def find_before(value)
     node = @head
 
