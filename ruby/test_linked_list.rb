@@ -81,5 +81,15 @@ class TestLinkedList < Minitest::Test
     assert_equal true, list.delete(10)
     hash = {:'20'=>'30', :'30'=>nil}
     assert_equal hash, list.hash_nodes
+    assert_equal false, list.cycle?
+  end
+
+  def test_cycle
+    list = LinkedList.new
+    list.append(10)
+    list.append(20)
+    list.append(30)
+    list.append(40, next_node: list.find(20))
+    assert_equal true, list.cycle?
   end
 end

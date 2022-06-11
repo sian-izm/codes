@@ -5,11 +5,14 @@ class LinkedList
     @head = nil      
   end
 
-  def append(value)
+  def append(value, next_node: nil)
     if @head
       find_tail.next = Node.new(value)
     else
       @head = Node.new(value)
+    end
+    if next_node
+      find_tail.next = next_node
     end
   end
 
@@ -51,7 +54,15 @@ class LinkedList
     return true
   end
 
-  def self.detectLoop
+  def cycle?
+    node = @head
+    array = []
+    while node
+      return true if array.include?(node)
+      array.push(node)
+      node = node.next
+    end
+    false
   end
 
   def find_before(value)
