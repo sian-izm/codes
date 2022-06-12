@@ -65,6 +65,18 @@ class LinkedList
     false
   end
 
+  def index_of_cycle
+    node = @head
+    array = [node]
+    while node = node.next
+      if index = array.index(node)
+        return index
+      end
+      array.push(node)
+    end
+    -1
+  end
+
   def find_before(value)
     node = @head
 

@@ -92,4 +92,14 @@ class TestLinkedList < Minitest::Test
     list.append(40, next_node: list.find(20))
     assert_equal true, list.cycle?
   end
+
+  def test_index_of_cycle
+    list = LinkedList.new
+    list.append(10)
+    list.append(20)
+    list.append(30)
+    list.append(40, next_node: list.find(20))
+    assert_equal true, list.cycle?
+    assert_equal 1, list.index_of_cycle
+  end
 end
