@@ -77,6 +77,9 @@ class LinkedList
     -1
   end
 
+  def delete_duplicate
+  end
+
   def find_before(value)
     node = @head
 
