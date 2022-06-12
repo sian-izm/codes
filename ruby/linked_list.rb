@@ -78,6 +78,7 @@ class LinkedList
   end
 
   def delete_duplicate
+    true
   end
 
   def find_before(value)

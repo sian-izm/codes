@@ -102,4 +102,17 @@ class TestLinkedList < Minitest::Test
     assert_equal true, list.cycle?
     assert_equal 1, list.index_of_cycle
   end
+
+  def test_delete_duplicate
+    list = LinkedList.new
+    list.append(10)
+    list.append(20)
+    list.append(30)
+    list.append(30)
+    list.append(40)
+    hash = {:'10'=>'20', :'20'=>'30', :'30'=>'40', :'40'=>nil}
+    assert_equal true, list.delete_duplicate
+    assert_equal hash, list.hash_nodes
+    assert_equal [10,20,30,40], list.array_values
+  end
 end
