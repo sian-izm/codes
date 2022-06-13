@@ -78,18 +78,28 @@ class LinkedList
   end
 
   def delete_duplicate
+    return @head unless @head
     node = @head
     hash = {}
     hash[node.value] = 1
     while node
       break unless node.next
       if hash.key?(node.next.value)
-        node.next = node.next.next
+        # node.next = node.next.next
+        node.next = find_next_not_duplicated_node(hash, node)
       end
-      hash[node.next.value] = 1
+      hash[node.next.value] = 1 if node.next
       node = node.next
     end
     true
+  end
+
+  def find_next_not_duplicated_node(hash, node)
+    if node.next && hash.key?(node.next.value)
+      find_next_not_duplicated_node(hash, node.next)
+    else
+      node.next
+    end
   end
 
   def find_before(value)
