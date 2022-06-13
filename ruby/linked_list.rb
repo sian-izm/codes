@@ -78,6 +78,17 @@ class LinkedList
   end
 
   def delete_duplicate
+    node = @head
+    hash = {}
+    hash[node.value] = 1
+    while node
+      break unless node.next
+      if hash.key?(node.next.value)
+        node.next = node.next.next
+      end
+      hash[node.next.value] = 1
+      node = node.next
+    end
     true
   end
 
