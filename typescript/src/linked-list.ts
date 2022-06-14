@@ -57,4 +57,12 @@ export class LinkedList<T> implements LinkedListInterface<T> {
     }
     return this.head ? checkNext(this.head) : null;
   }
+
+  public deleteNode(node: Node<T>): void {
+    if (!node.prev) {
+      this.head = node.next
+    } else {
+      node.prev.next = node.next
+    }
+  }
 }
