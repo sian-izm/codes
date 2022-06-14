@@ -7,4 +7,5 @@ export interface LinkedListInterface<T> {
   traverse(): T[];
   size(): number;
   search(comparator: (data: T) => boolean): Node<T> | null;
+  deleteDuplicatedNodes(): void;
 }
