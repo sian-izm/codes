@@ -52,5 +52,19 @@ describe("linked list", () => {
     const node = linkedList.search(({title}) => title === 'Mogomogo')
     linkedList.deleteNode(node);
     expect(linkedList.traverse()).to.deep.equal([{title: "Fugafuga"}, {title: "Hogehoge"}]);
+  });
+
+  it('should delete duplicated nodes', () => {
+    const linkedList = new LinkedList<number>();
+    linkedList.insertAtEnd(1);
+    linkedList.insertAtEnd(1);
+    linkedList.insertAtEnd(2);
+    linkedList.insertAtEnd(2);
+    linkedList.insertAtEnd(2);
+    linkedList.insertAtEnd(3);
+    linkedList.insertAtEnd(3);
+    linkedList.insertAtEnd(4);
+    linkedList.deleteDuplicatedNodes();
+    expect(linkedList.traverse()).to.deep.equal([1,2,3,4]);
   })
 })

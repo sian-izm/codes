@@ -65,7 +65,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
       node.prev.next = node.next
     }
   }
-  public deleteDupicatedNodes(): void{
-    
+  public deleteDuplicatedNodes(): void{
+
   }
 }
