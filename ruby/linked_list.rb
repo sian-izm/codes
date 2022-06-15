@@ -33,10 +33,9 @@ class LinkedList
   def find(value)
     node = @head
 
-    return unless node
-    return node if node.value == value
-    while node = node.next
+    while node
       return node if node.value == value
+      node = node.next
     end
   end
 
@@ -78,7 +77,7 @@ class LinkedList
   end
 
   def delete_duplicate
-    return @head unless @head
+    return unless @head
     node = @head
     hash = {}
     hash[node.value] = 1
@@ -105,27 +104,28 @@ class LinkedList
     node = @head
 
     return unless node.next
-    return node if node.next.value == value
-    while node = node.next
+    while node
       return node if node&.next&.value == value
+      node = node.next
     end
   end
 
   def array_values
     node = @head
-    array = [node.value]
-    while node = node.next
+    array = []
+    while node
       array.push(node.value)
+      node = node.next
     end
     array
   end
 
   def hash_nodes
     node = @head
-    return {} unless node
-    hash = {node.value.to_s.to_sym => node.next&.value&.to_s}
-    while node = node.next
+    hash = {}
+    while node
       hash[node.value.to_s.to_sym] = node.next&.value&.to_s
+      node = node.next
     end
     hash
   end
