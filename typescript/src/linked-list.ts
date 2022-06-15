@@ -66,6 +66,33 @@ export class LinkedList<T> implements LinkedListInterface<T> {
     }
   }
   public deleteDuplicatedNodes(): void{
+    const node = this.head;
+    if (!node) {
+      return;
+    }
+    const array = new Array();
+    array.push(node.data);
+    const appendNode = (node: Node<T>): void => {
+      if (array.indexOf(node.data) === -1) {
 
+        array.push(node.data);
+
+      } else {
+        console.log('current data');
+        console.log(node.data);
+        console.log('next data');
+        console.log(node.next.data);
+        console.log('prev data');
+        console.log(node.prev.data);
+        console.log('------');
+        this.deleteNode(node);
+      }
+      if (node.next) {
+        appendNode(node.next);
+      }
+    }
+    if (node.next) {
+      appendNode(node.next);
+    }
   }
 }
