@@ -65,34 +65,33 @@ export class LinkedList<T> implements LinkedListInterface<T> {
       node.prev.next = node.next
     }
   }
-  public deleteDuplicatedNodes(): void{
-    const node = this.head;
+
+  public deleteDuplicatedNodes(): void {
+    const node = this.head
     if (!node) {
-      return;
+      return
     }
-    const array = new Array();
-    array.push(node.data);
+    const array: T[] = new Array<T>()
     const appendNode = (node: Node<T>): void => {
-      if (array.indexOf(node.data) === -1) {
+      if (array.includes(node.data)) {
+        const nextNode = findNextNotDuplicatedNode(array, node)
 
-        array.push(node.data);
-
+        node.prev.next = nextNode
+        appendNode(nextNode)
       } else {
-        console.log('current data');
-        console.log(node.data);
-        console.log('next data');
-        console.log(node.next.data);
-        console.log('prev data');
-        console.log(node.prev.data);
-        console.log('------');
-        this.deleteNode(node);
-      }
-      if (node.next) {
-        appendNode(node.next);
+        array.push(node.data)
+        node.next ? appendNode(node.next) : null
       }
     }
-    if (node.next) {
-      appendNode(node.next);
+    const findNextNotDuplicatedNode = (array: T[], node: Node<T>): Node<T> => {
+      if (array.includes(node.next.data)) {
+        return findNextNotDuplicatedNode(array, node.next)
+      } else {
+        return node.next
+      }
     }
+
+    array.push(node.data)
+    node.next ? appendNode(node.next) : null
   }
 }

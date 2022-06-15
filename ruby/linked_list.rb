@@ -85,7 +85,6 @@ class LinkedList
     while node
       break unless node.next
       if hash.key?(node.next.value)
-        # node.next = node.next.next
         node.next = find_next_not_duplicated_node(hash, node)
       end
       hash[node.next.value] = 1 if node.next
