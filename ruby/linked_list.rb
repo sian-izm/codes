@@ -100,6 +100,10 @@ class LinkedList
     end
   end
 
+  def delete_duplicate_all
+    return unless @head
+  end
+
   def find_before(value)
     node = @head
 

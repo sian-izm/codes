@@ -117,4 +117,18 @@ class TestLinkedList < Minitest::Test
     assert_equal hash, list.hash_nodes
     assert_equal [10,20,30,40], list.array_values
   end
+
+  def test_delete_duplicate_all
+    list = LinkedList.new
+    list.append(10)
+    list.append(20)
+    list.append(30)
+    list.append(30)
+    list.append(30)
+    list.append(40)
+    list.append(40)
+    list.delete_duplicate_all
+    hash = {:'10'=>'20', :'20'=>nil}
+    assert_equal hash, list.hash_nodes
+  end
 end
