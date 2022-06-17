@@ -120,6 +120,10 @@ class TestLinkedList < Minitest::Test
 
   def test_delete_duplicate_all
     list = LinkedList.new
+    list.append(1)
+    list.append(1)
+    list.append(2)
+    list.append(2)
     list.append(10)
     list.append(20)
     list.append(30)
@@ -127,8 +131,14 @@ class TestLinkedList < Minitest::Test
     list.append(30)
     list.append(40)
     list.append(40)
+    list.append(50)
+    list.append(50)
+    list.append(60)
+    list.append(70)
+    list.append(70)
+    list.append(70)
+    list.append(80)
     list.delete_duplicate_all
-    hash = {:'10'=>'20', :'20'=>nil}
-    assert_equal hash, list.hash_nodes
+    assert_equal [10,20,60,80], list.array_values
   end
 end

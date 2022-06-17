@@ -102,6 +102,38 @@ class LinkedList
 
   def delete_duplicate_all
     return unless @head
+    node = @head
+    hash = {}
+    hash[node.value] = 1
+    if hash.key?(node.next&.value)
+      @head = find_next_not_duplicated_node(hash, node)
+      node = @head
+      delete_duplicated_own_and_next_node_of_head(hash, node)
+    end
+
+    while node
+      break unless node.next
+      hash[node.next.value] = 1
+      delete_duplicated_own_and_next_node(hash, node)
+      node = node.next
+    end
+  end
+
+  def delete_duplicated_own_and_next_node_of_head(hash, node)
+    if hash.key?(node.next&.next&.value)
+      @head = find_next_not_duplicated_node(hash, node.next)
+      node = @head
+      hash[node.next.value] = 1
+      delete_duplicated_own_and_next_node(hash, node)
+    end
+  end
+
+  def delete_duplicated_own_and_next_node(hash, node)
+    if hash.key?(node.next&.value)
+      node.next = find_next_not_duplicated_node(hash, node)
+      hash[node.value] = 1
+      delete_duplicated_own_and_next_node(hash, node)
+    end
   end
 
   def find_before(value)
