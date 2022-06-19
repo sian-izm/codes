@@ -67,4 +67,29 @@ describe("linked list", () => {
     linkedList.deleteDuplicatedNodes();
     expect(linkedList.traverse()).to.deep.equal([1,2,3,4]);
   })
+
+  it('should delete all duplicated nodes', () => {
+    const linkedList = new LinkedList<number>();
+    linkedList.insertAtEnd(1);
+    linkedList.insertAtEnd(1);
+    linkedList.insertAtEnd(2);
+    linkedList.insertAtEnd(2);
+    linkedList.insertAtEnd(2);
+    linkedList.insertAtEnd(10);
+    linkedList.insertAtEnd(20);
+    linkedList.insertAtEnd(30);
+    linkedList.insertAtEnd(30);
+    linkedList.insertAtEnd(30);
+    linkedList.insertAtEnd(40);
+    linkedList.insertAtEnd(40);
+    linkedList.insertAtEnd(50);
+    linkedList.insertAtEnd(50);
+    linkedList.insertAtEnd(60);
+    linkedList.insertAtEnd(70);
+    linkedList.insertAtEnd(70);
+    linkedList.insertAtEnd(70);
+    linkedList.insertAtEnd(80);
+    linkedList.deleteAllDuplicatedNodes();
+    expect(linkedList.traverse()).to.deep.equal([10,20,60,80]);
+  })
 })

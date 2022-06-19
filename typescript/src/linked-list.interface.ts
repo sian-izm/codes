@@ -8,4 +8,5 @@ export interface LinkedListInterface<T> {
   size(): number;
   search(comparator: (data: T) => boolean): Node<T> | null;
   deleteDuplicatedNodes(): void;
+  deleteAllDuplicatedNodes(): void;
 }
