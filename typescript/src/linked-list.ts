@@ -94,4 +94,42 @@ export class LinkedList<T> implements LinkedListInterface<T> {
     array.push(node.data)
     node.next ? appendNode(node.next) : null
   }
+
+  public findNextNotDuplicatedNode(array: T[], node: Node<T>): Node<T> {
+    if (array.includes(node.next.data)) {
+      return this.findNextNotDuplicatedNode(array, node.next)
+    } else {
+      return node.next
+    }
+  }
+
+  public deleteAllDuplicatedNodes(): void {
+    const node = this.head
+    if (!node) {
+      return
+    }
+
+    const array = new Array<T>();
+    const replaceNode = (node: Node<T>): void => {
+      if (array.includes(node.data)) {
+        console.log(array)
+        console.log(node.data)
+        console.log(node.prev.data)
+        const nextNode = this.findNextNotDuplicatedNode(array, node)
+        node.prev = nextNode
+        console.log(node.prev.data)
+        console.log(node.prev.prev.data)
+        console.log('-----');
+
+        replaceNode(nextNode)
+      } else {
+        array.push(node.data)
+        node.next ? replaceNode(node.next) : null
+      }
+    }
+    array.push(node.data)
+
+    node.next ? replaceNode(node.next) : null
+
+  }
 }
