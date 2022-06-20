@@ -96,7 +96,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
   }
 
   public findNextNotDuplicatedNode(array: T[], node: Node<T>): Node<T> {
-    if (array.includes(node.next.data)) {
+    if (node.next !== null && array.includes(node.next.data)) {
       return this.findNextNotDuplicatedNode(array, node.next)
     } else {
       return node.next
@@ -115,21 +115,30 @@ export class LinkedList<T> implements LinkedListInterface<T> {
         console.log(array)
         console.log(node.data)
         console.log(node.prev.data)
+        console.log(node.next.data)
         const nextNode = this.findNextNotDuplicatedNode(array, node)
-        node.prev = nextNode
-        console.log(node.prev.data)
-        console.log(node.prev.prev.data)
+        if (!node.prev) {
+          this.head = nextNode
+        } else {
+          node.prev = nextNode
+        }
         console.log('-----');
-
-        replaceNode(nextNode)
+        if (nextNode && nextNode.next) {
+          replaceNode(nextNode)
+        }
       } else {
         array.push(node.data)
         node.next ? replaceNode(node.next) : null
       }
     }
     array.push(node.data)
-
+    if (!node.prev) {
+      if (array.includes(node.data)) {
+        const nextNode = this.findNextNotDuplicatedNode(array, node)
+        this.head = nextNode
+        array.push(nextNode.data)
+      }
+    }
     node.next ? replaceNode(node.next) : null
-
   }
 }
