@@ -104,7 +104,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
   }
 
   public deleteAllDuplicatedNodes(): void {
-    const node = this.head
+    let node = this.head
     if (!node) {
       return
     }
@@ -131,14 +131,19 @@ export class LinkedList<T> implements LinkedListInterface<T> {
         node.next ? replaceNode(node.next) : null
       }
     }
-    array.push(node.data)
-    if (!node.prev) {
+
+    const replaceNodeOfHead = (node: Node<T>): void => {
       if (array.includes(node.data)) {
         const nextNode = this.findNextNotDuplicatedNode(array, node)
         this.head = nextNode
-        array.push(nextNode.data)
+        node = this.head
+        if (!node) return
+        nextNode ? array.push(nextNode.data) : null
+        node.next ? replaceNodeOfHead(node.next) : null
       }
     }
+    array.push(node.data)
+    node.prev ? null : replaceNodeOfHead(node)
     node.next ? replaceNode(node.next) : null
   }
 }

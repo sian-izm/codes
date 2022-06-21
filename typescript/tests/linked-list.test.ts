@@ -68,13 +68,44 @@ describe("linked list", () => {
     expect(linkedList.traverse()).to.deep.equal([1,2,3,4]);
   })
 
-  it('should delete all duplicated nodes-first element', () => {
+  it('should delete all duplicated nodes-first element-1', () => {
     const linkedList = new LinkedList<number>();
     linkedList.insertAtEnd(1);
     linkedList.insertAtEnd(1);
     linkedList.insertAtEnd(2);
     linkedList.deleteAllDuplicatedNodes();
     expect(linkedList.traverse()).to.deep.equal([2]);
+  })
+
+  it('should delete all duplicated nodes-first element-2', () => {
+    const linkedList = new LinkedList<number>();
+    linkedList.insertAtEnd(1);
+    linkedList.insertAtEnd(1);
+    linkedList.insertAtEnd(2);
+    linkedList.insertAtEnd(2);
+    linkedList.insertAtEnd(3);
+    linkedList.deleteAllDuplicatedNodes();
+    expect(linkedList.traverse()).to.deep.equal([3]);
+  })
+
+  it('should delete all duplicate nodes - null 1', () => {
+    const linkedList = new LinkedList<number>();
+    linkedList.insertAtEnd(1);
+    linkedList.insertAtEnd(1);
+    linkedList.insertAtEnd(2);
+    linkedList.insertAtEnd(2);
+    linkedList.deleteAllDuplicatedNodes();
+    expect(linkedList.traverse()).to.deep.equal([])
+  })
+
+  it('should delete all duplicate nodes - null 2', () => {
+    const linkedList = new LinkedList<number>();
+    linkedList.insertAtEnd(1);
+    linkedList.insertAtEnd(1);
+    linkedList.insertAtEnd(2);
+    linkedList.insertAtEnd(2);
+    linkedList.deleteAllDuplicatedNodes();
+    expect(linkedList.traverse()).to.deep.equal([])
   })
 
   // it('should delete all duplicated nodes-later element', () => {
