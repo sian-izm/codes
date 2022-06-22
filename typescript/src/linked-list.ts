@@ -111,26 +111,47 @@ export class LinkedList<T> implements LinkedListInterface<T> {
 
     const array = new Array<T>();
     const replaceNode = (node: Node<T>): void => {
+      console.log(node)
+      console.log(array)
       if (array.includes(node.data)) {
-        console.log(array)
-        console.log(node.data)
-        console.log(node.prev.data)
-        console.log(node.next.data)
+        // console.log(node.data)
+        // console.log(node.prev.data)
+        // console.log(node.next.data)
         const nextNode = this.findNextNotDuplicatedNode(array, node)
-        if (!node.prev) {
-          this.head = nextNode
-        } else {
-          node.prev = nextNode
-        }
-        console.log('-----');
+        node.prev.next = nextNode
+        // console.log(this.head)
+        // console.log(node.prev.data)
+        // console.log('-----');
         if (nextNode && nextNode.next) {
           replaceNode(nextNode)
         }
       } else {
         array.push(node.data)
-        node.next ? replaceNode(node.next) : null
+        node.next ? replacePrevNode(node.next) : null
       }
     }
+
+    const replacePrevNode = (node: Node<T>): void => {
+      console.log(node)
+      console.log(array)
+      if (array.includes(node.data)) {
+        // console.log(node.data)
+        // console.log(node.prev.data)
+        // console.log(node.next.data)
+        const nextNode = this.findNextNotDuplicatedNode(array, node)
+        node.prev.prev.next = nextNode
+        // console.log(this.head)
+        // console.log(node.prev.data)
+        // console.log('-----');
+        if (nextNode && nextNode.next) {
+          replaceNode(nextNode)
+        }
+      } else {
+        array.push(node.data)
+        node.next ? replacePrevNode(node.next) : null
+      }
+    }
+
 
     const replaceNodeOfHead = (node: Node<T>): void => {
       if (array.includes(node.data)) {
@@ -143,7 +164,9 @@ export class LinkedList<T> implements LinkedListInterface<T> {
       }
     }
     array.push(node.data)
-    node.prev ? null : replaceNodeOfHead(node)
-    node.next ? replaceNode(node.next) : null
+    if (!node.next) return
+    replaceNodeOfHead(node.next)
+    console.log(node)
+    replaceNode(node.next)
   }
 }
