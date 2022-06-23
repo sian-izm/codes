@@ -134,12 +134,15 @@ describe("linked list", () => {
     linkedList.insertAtEnd(40);
     linkedList.insertAtEnd(50);
     linkedList.insertAtEnd(50);
+    linkedList.insertAtEnd(50);
     linkedList.insertAtEnd(60);
     linkedList.insertAtEnd(70);
     linkedList.insertAtEnd(70);
     linkedList.insertAtEnd(70);
     linkedList.insertAtEnd(80);
+    linkedList.insertAtEnd(80);
+    linkedList.insertAtEnd(90);
     linkedList.deleteAllDuplicatedNodes();
-    expect(linkedList.traverse()).to.deep.equal([10,20,60,80]);
+    expect(linkedList.traverse()).to.deep.equal([10,20,60,90]);
   })
 })
