@@ -166,7 +166,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
     array.push(node.data)
     if (!node.next) return
     replaceNodeOfHead(node.next)
-    console.log(node)
+    console.log('replace Node')
     replaceNode(node.next)
   }
 }
