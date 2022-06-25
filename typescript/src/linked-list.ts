@@ -105,26 +105,14 @@ export class LinkedList<T> implements LinkedListInterface<T> {
 
   public deleteAllDuplicatedNodes(): void {
     let node = this.head
-    if (!node) {
-      return
-    }
+    if (!node) return
 
     const array = new Array<T>();
     const replaceNode = (node: Node<T>): void => {
-      console.log(node)
-      console.log(array)
       if (array.includes(node.data)) {
-        // console.log(node.data)
-        // console.log(node.prev.data)
-        // console.log(node.next.data)
         const nextNode = this.findNextNotDuplicatedNode(array, node)
         node.prev.next = nextNode
-        // console.log(this.head)
-        // console.log(node.prev.data)
-        // console.log('-----');
-        if (nextNode && nextNode.next) {
-          replaceNode(nextNode)
-        }
+        if (nextNode && nextNode.next) replaceNode(nextNode)
       } else {
         array.push(node.data)
         node.next ? replacePrevNode(node.next) : null
@@ -132,17 +120,11 @@ export class LinkedList<T> implements LinkedListInterface<T> {
     }
 
     const replacePrevNode = (node: Node<T>): void => {
-      console.log(node)
-      console.log(array)
       if (array.includes(node.data)) {
-        // console.log(node.data)
-        // console.log(node.prev.data)
-        // console.log(node.next.data)
         const nextNode = this.findNextNotDuplicatedNode(array, node)
+        nextNode ? nextNode.prev = node.prev.prev : null
+
         node.prev.prev.next = nextNode
-        // console.log(this.head)
-        // console.log(node.prev.data)
-        // console.log('-----');
         if (nextNode && nextNode.next) {
           replaceNode(nextNode)
         }
@@ -166,7 +148,6 @@ export class LinkedList<T> implements LinkedListInterface<T> {
     array.push(node.data)
     if (!node.next) return
     replaceNodeOfHead(node.next)
-    console.log('replace Node')
     replaceNode(node.next)
   }
 }
