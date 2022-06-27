@@ -1,5 +1,6 @@
 import { Node } from "./node";
+import { LinkedList } from "../src/linked-list";
 
-export function addTwoNumbers(l1: Node<T>[] | null, l2: Node<T>[] | null ): Node<T>[] | null {
-  return null
+export function addTwoNumbers(l1: LinkedList<number> | null, l2: LinkedList<number> | null ): LinkedList<number> | null {
+  return null;
 }
