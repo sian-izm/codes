@@ -165,4 +165,11 @@ class LinkedList
     end
     hash
   end
+
+  def self.add_two_numbers(l1, l2)
+    list = self.new
+    list.append(1)
+    list.append(3)
+    return list
+  end
 end

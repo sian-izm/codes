@@ -141,4 +141,13 @@ class TestLinkedList < Minitest::Test
     list.delete_duplicate_all
     assert_equal [10,20,60,80], list.array_values
   end
+
+  def test_add_two_numbers
+    list1 = LinkedList.new
+    list1.append(1)
+    list1.append(1)
+    list2 = LinkedList.new
+    list2.append(2)
+    assert_equal [1,3], LinkedList.add_two_numbers(list1, list2).array_values
+  end
 end
