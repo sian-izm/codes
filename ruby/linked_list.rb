@@ -168,15 +168,14 @@ class LinkedList
 
   def self.add_two_numbers(l1, l2)
     # validate - 1 digit number
-    l1_values = l2.array_values.inject(0, :+)
-    l2_values = l2.array_values.inject(0, :+)
+    l1_values = l1.array_values.inject{|a,i| a*10 + i}
+    l2_values = l2.array_values.inject{|a,i| a*10 + i}
     sum = l1_values + l2_values
     list = self.new
 
-    sum.digits.each do |num|
-      puts num
+    sum.digits.reverse.each do |num|
       list.append(num)
     end
-    return list
+    list
   end
 end

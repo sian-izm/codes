@@ -146,9 +146,9 @@ class TestLinkedList < Minitest::Test
     list1 = LinkedList.new
     list1.append(1)
     list1.append(2)
-    puts list1.array_values
+    assert_equal [1,2], list1.array_values
     list2 = LinkedList.new
     list2.append(2)
-    assert_equal [1,3], LinkedList.add_two_numbers(list1, list2).array_values
+    assert_equal [1,4], LinkedList.add_two_numbers(list1, list2).array_values
   end
 end
