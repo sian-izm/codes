@@ -142,13 +142,21 @@ class TestLinkedList < Minitest::Test
     assert_equal [10,20,60,80], list.array_values
   end
 
-  def test_add_two_numbers
+  def test_add_two_numbers_1
     list1 = LinkedList.new
     list1.append(1)
     list1.append(2)
-    assert_equal [1,2], list1.array_values
     list2 = LinkedList.new
     list2.append(2)
     assert_equal [1,4], LinkedList.add_two_numbers(list1, list2).array_values
+  end
+
+  def test_add_two_numbers_2
+    list1 = LinkedList.new
+    list1.append(12)
+    list1.append(2)
+    list2 = LinkedList.new
+    list2.append(2)
+    assert_raises(Exception){LinkedList.add_two_numbers(list1, list2)}
   end
 end

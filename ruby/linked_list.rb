@@ -167,9 +167,15 @@ class LinkedList
   end
 
   def self.add_two_numbers(l1, l2)
-    # validate - 1 digit number
-    l1_values = l1.array_values.inject{|a,i| a*10 + i}
-    l2_values = l2.array_values.inject{|a,i| a*10 + i}
+    l1_array = l1.array_values
+    l2_array = l2.array_values
+    [*l1_array, *l2_array].each do |num|
+      raise Exception.new unless num.is_a? Integer
+      raise Exception.new unless num.to_s.length == 1
+    end
+
+    l1_values = l1_array.inject{|sum,i| sum*10 + i}
+    l2_values = l2_array.inject{|sun,i| sum*10 + i}
     sum = l1_values + l2_values
     list = self.new
 
