@@ -46,4 +46,9 @@ class TestValidParentheses < Minitest::Test
     str = '{[]}'
     assert_equal true, Parenthes.valid?(str)
   end
+
+  def test_only_close_bracket
+    str = ']'
+    assert_equal false, Parenthes.valid?(str)
+  end
 end
