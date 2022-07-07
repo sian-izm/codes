@@ -7,26 +7,30 @@ class Parenthes
   CLOSE_BRACKET = ']'
  
   def self.valid?(s)
-    corresponding_close = []
+    expected_close_patterns = []
     s.each_char do |str|
-      if find_corresponding_close(str)
-        corresponding_close.push(find_corresponding_close(str))
-      elsif (closes & corresponding_close) != []
+      if open_pattern?(str)
+        expected_close_patterns.push(corresponding_close(str))
+      elsif expected_close_patterns.any?
         case str
-        when *not_corresponding_close(corresponding_close)
+        when *different_close_patterns(expected_close_patterns)
           return false
-        when corresponding_close.last
-          corresponding_close.pop
+        when expected_close_patterns.last
+          expected_close_patterns.pop
         end
       elsif closes.include?(str)
         return false
       end
     end
-    corresponding_close == [] ? true : false
+    expected_close_patterns == [] ? true : false
   end
 
-  def self.find_corresponding_close(open_str)
-    case open_str
+  def self.open_pattern?(str)
+    corresponding_close(str) ? true : false
+  end
+
+  def self.corresponding_close(str)
+    case str
     when OPEN_BRACE
       CLOSE_BRACE
     when OPEN_BRACKET
@@ -44,7 +48,7 @@ class Parenthes
     [:BRACE, :BRACKET, :PARENTH].map {|str| eval("CLOSE_#{str}")}
   end
 
-  def self.not_corresponding_close(close)
+  def self.different_close_patterns(close)
     closes = [:BRACE, :BRACKET, :PARENTH].map {|str| eval("CLOSE_#{str}")}
     close.each {|str| closes.delete(str) }
     closes
