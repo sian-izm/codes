@@ -134,7 +134,6 @@ export class LinkedList<T> implements LinkedListInterface<T> {
       }
     }
 
-
     const replaceNodeOfHead = (node: Node<T>): void => {
       if (array.includes(node.data)) {
         const nextNode = this.findNextNotDuplicatedNode(array, node)

@@ -1,5 +1,6 @@
-import { Node } './node'
+import { Node } from "./node"
 
-function reverseList(head: Node<number> | null ): Node<number> | null {
-
+export function reverseList(head: Node<number> | null): Node<number> | null {
+  if (!head.next) return head
+  const newNode = new Node(data);
 }
