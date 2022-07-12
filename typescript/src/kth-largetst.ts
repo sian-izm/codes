@@ -4,6 +4,6 @@ export class KthLargest {
   }
 
   add(val: number): number {
-    
+    return val
   }
 }
