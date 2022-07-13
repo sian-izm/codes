@@ -8,6 +8,6 @@ describe('KthLargest', () => {
     expect(kthLargest.add(5)).to.equal(5)
     expect(kthLargest.add(10)).to.equal(5)
     expect(kthLargest.add(9)).to.equal(8)
-    expect(kthLargest.add(9)).to.equal(8)
+    expect(kthLargest.add(4)).to.equal(8)
   })
 })
