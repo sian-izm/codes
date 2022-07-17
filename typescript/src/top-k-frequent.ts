@@ -4,9 +4,7 @@ export function topKFrequent(nums: number[], k: number): any {
   nums.forEach(function(value) {
     numsFromLargestCount[value] = (numsFromLargestCount[value] || 0) + 1
   })
-  console.log(numsFromLargestCount)
   var resArray = Object.keys(numsFromLargestCount).map(function(key) {
-    console.log(key)
     return [key, numsFromLargestCount[key]]
   })
   resArray.sort(function(first, second){
