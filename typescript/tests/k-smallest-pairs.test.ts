@@ -11,6 +11,9 @@ describe('kSmallestPairs', () => {
   it('should return 3 smallest patterns-2', () => {
     expect(kSmallestPairs([1,2],[3],2)).to.deep.equal([[1,3],[2,3]])
   })
+  it('should return 3 smallest patterns-3', () => {
+    expect(kSmallestPairs([-10,-4,0,0,6],[3,5,6,7,8,100],10)).to.deep.equal([[-10,3],[-10,5],[-10,6],[-10,7],[-10,8],[-4,3],[-4,5],[-4,6],[0,3],[0,3]])
+  })
 })
 
 describe('kSmallestPairs2', () => {
@@ -23,4 +26,7 @@ describe('kSmallestPairs2', () => {
   it('should return 3 smallest patterns-2', () => {
     expect(kSmallestPairs2([1,2],[3],2)).to.deep.equal([[1,3],[2,3]])
   })
+  // it('should return 3 smallest patterns-3', () => {
+  //   expect(kSmallestPairs2([-10,-4,0,0,6],[3,5,6,7,8,100],10)).to.deep.equal([[-10,3],[-10,5],[-10,6],[-10,7],[-10,8],[-4,3],[-4,5],[-4,6],[0,3],[0,3]])
+  // })
 })

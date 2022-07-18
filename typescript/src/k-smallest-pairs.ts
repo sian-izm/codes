@@ -28,25 +28,12 @@ export function kSmallestPairs2(nums1: number[], nums2: number[], k: number): nu
   })
   let i = 0;
   let result = []
-  const hoge = async () => {
-    console.log(sumDict)
-    console.log('hogehoge')
-    await Object.keys(sumDict).forEach(function(key){
-      console.log(key)
-      sumDict[key].forEach(function(element) {
-        console.log(element)
-        result.push(element)
-        i++
-        if (i===k) {
-          return result
-        }
-      })
-    })    
-  }
-  hoge
-  console.log('aaaaaaaaaaaaaaaaa')
-  console.log(hoge)
-  console.log('bbbbbbbbbbb')
-
-  return result
+  Object.keys(sumDict).some(key => {
+    sumDict[key].some(element => {
+      result.push(element)
+      i++
+      if (i===k) {return true}
+    })
+  })
+  return result.slice(0,k)
 }
