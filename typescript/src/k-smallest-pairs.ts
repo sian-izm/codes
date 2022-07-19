@@ -28,7 +28,10 @@ export function kSmallestPairs2(nums1: number[], nums2: number[], k: number): nu
   })
   let i = 0;
   let result = []
-  Object.keys(sumDict).some(key => {
+
+  Object.keys(sumDict).sort(function(first, second) {
+    return Number(first) - Number(second)
+  }).some(key => {
     sumDict[key].some(element => {
       result.push(element)
       i++
