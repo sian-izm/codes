@@ -1,7 +1,7 @@
 export function intersection(nums1: number[], nums2: number[]): number[] {
   const unique = (array => {
     let result = array.filter((value, index) => {
-      return array.indexOf(value) === index
+      return (array.indexOf(value) === index)
     })
     return result.sort((first, second) => { return first - second })
   })
@@ -14,7 +14,7 @@ export function intersection(nums1: number[], nums2: number[]): number[] {
     if (uniqNums1[ai] < uniqNums2[bi]) { ai++ }
     else if (uniqNums2[bi] < uniqNums1[ai]) { bi++ }
     else  {
-      if (uniqNums1[ai]) {
+      if (uniqNums1[ai] !== undefined) {
         result.push(uniqNums1[ai])
       }
       ai++
