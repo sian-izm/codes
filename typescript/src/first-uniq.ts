@@ -22,24 +22,14 @@ export function firstUniq(s: string): number {
 
 
 export function firstUniqFor(s: string): number {
-  const uniqDict: {[key: string]: number} = {}
-  const dupDict: {[key: string]: number} = {}
-
   const sArray = s.split('')
-  const result = sArray.find((char, index) => {
+  let result = sArray.findIndex((char, index) => {
     for(let i=index+1;i<sArray.length;i++) {
       if (char === sArray[i]) {
         break
       }
-      if (i===(sArray.length-1)) {
-        console.log(i)
-        console.log(char)
-        console.log(sArray[i])
-
-        return index
-      }
+      return i===(sArray.length-1)
     }
   })
-
   return result ? Number(result) : -1
 }
