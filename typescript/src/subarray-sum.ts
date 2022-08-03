@@ -13,6 +13,9 @@ export function subarraySum(nums: number[], k: number): number {
           }
         }
       }
+      if (nums[index+1] !== 0) {
+        valueSum = 0
+      }
     } else {
       for(let i=index+1;i<nums.length;i++) {
         valueSum += nums[i]
