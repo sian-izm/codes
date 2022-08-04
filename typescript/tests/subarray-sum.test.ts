@@ -29,4 +29,7 @@ describe('subarraySum', () => {
   it('should return 4-2', () => {
     expect(subarraySum([1,2,3,4,5,6,7,1,23,21,3,1,2,1,1,1,1,1,12,2,3,2,3,2,2],12)).to.equal(4)
   })
+  it('should return 4-3', () => {
+    expect(subarraySum([12,2,3,2,3,2,2],12)).to.equal(3)
+  })
 })
