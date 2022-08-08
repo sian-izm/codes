@@ -1,5 +1,6 @@
 import { expect } from 'chai'
-import { maxDepth, TreeNode } from '../src/max-depth'
+import { maxDepth } from '../src/max-depth'
+import { TreeNode } from '../src/tree-node'
 
 describe('maxDepth', () => {
   it('should return 1', () => {
