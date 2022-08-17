@@ -4,7 +4,7 @@ import { TreeNode } from '../src/tree-node'
 
 describe('sortedArrayToBST', () => {
   it('should return 2 nested level tree', () => {
-    const node4 = new TreeNode(-10)
+    const node4 = new TreeNode(5)
     const node3 = new TreeNode(9,node4)
     const node2 = new TreeNode(-10)
     const node1 = new TreeNode(-3,node2)
