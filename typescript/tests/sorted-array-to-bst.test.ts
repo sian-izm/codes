@@ -10,6 +10,6 @@ describe('sortedArrayToBST', () => {
     const node1 = new TreeNode(-3,node2)
     const result = new TreeNode(0,node1,node3)
 
-    expect(sortedArrayToBST([-10,-3,0,5,9])).to.equal(result)
+    expect(sortedArrayToBST([-10,-3,0,5,9])).to.deep.equal(result)
   })
 })
