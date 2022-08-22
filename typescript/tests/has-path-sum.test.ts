@@ -15,4 +15,20 @@ describe('hasPathSum', () => {
     const root = new TreeNode(5,node1, node2)
     expect(hasPathSum(root, 22)).to.equal(true)
   })
+
+  it('should return false with 2 level node', () => {
+    const node2 = new TreeNode(3)
+    const node1 = new TreeNode(2)
+    const root = new TreeNode(1,node1, node2)
+    expect(hasPathSum(root, 5)).to.equal(false)
+  })
+
+  it('should return false with null node', () => {
+    expect(hasPathSum(null, 0)).to.equal(false)
+  })
+
+  it('should return true with 1 level node', () => {
+    const root = new TreeNode(1)
+    expect(hasPathSum(root, 1)).to.equal(true)
+  })
 })
