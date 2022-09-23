@@ -4,11 +4,19 @@ import { TreeNode } from '../src/tree-node-right'
 
 describe('isValidBST', () => {
   it('should return true with 2 nested tree', () => {
-    const node4 = new TreeNode(7)
-    const node3 = new TreeNode(15)
-    const node2 = new TreeNode(20,node3,node4)
-    const node1 = new TreeNode(9)
-    const root = new TreeNode(3,node1, node2)
+    const node2 = new TreeNode(3)
+    const node1 = new TreeNode(1)
+    const root = new TreeNode(2,node1, node2)
     expect(isValidBST(root)).to.equal(true)
   })
+
+  it('should return false with 3 nested tree', () => {
+    const node4 = new TreeNode(6)
+    const node3 = new TreeNode(3)
+    const node2 = new TreeNode(4,node3,node4)
+    const node1 = new TreeNode(1)
+    const root = new TreeNode(5,node1, node2)
+    expect(isValidBST(root)).to.equal(false)
+  })
+
 })
