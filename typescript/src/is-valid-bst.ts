@@ -1,21 +1,11 @@
 import { TreeNode } from "./tree-node-right";
 
-export function isValidBST(root: TreeNode | null): boolean {
-  return isSmaller(root.left, root.val) && isLarger(root.right, root.val)
-}
-
-function isLarger(node: TreeNode | null, val: number, smallVals?: number[]): boolean {
-  if (!node) { return true }
-  if (node.val <= val) { return false }
-  if (smallVals) {
-    if (smallVals.some((e) => e >= node.val)) {return false }
-  }
-  smallVals.push(node.val)
-  return isSmaller(node.left, node.val) && isLarger(node.right, node.val, smallVals)
-}
-
-function isSmaller(node: TreeNode | null, val: number): boolean {
-  if (!node) { return true }
-  if (node.val >= val) { return false }
-  return isSmaller(node.left, node.val) && isLarger(node.right, node.val)
+export function isValidBST(
+  root: TreeNode | null,
+  min: number = Number.MIN_SAFE_INTEGER,
+  max: number = Number.MAX_SAFE_INTEGER
+): boolean {
+  if (!root) return true
+  if (root.val <= min || root.val >= max) return false
+  return isValidBST(root.left, min, root.val) && isValidBST(root.right, root.val, max)
 }
