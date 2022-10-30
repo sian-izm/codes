@@ -1,10 +1,20 @@
 import { TreeNode } from "./tree-node-right";
 
 export function buildTree(preorder: number[], inorder: number[]): TreeNode | null {
-  const root = preorder[0]
-  const rootIndex = inorder.findIndex(root)
-  const result = new TreeNode(root, leftNode(preorder[rootIndex+1], inorder[0...rootIndex]), rightNode(preorder[],inorder[rootIndex...-1]))
+  const rootVal: number = preorder[0]
+  const inorderRootIndex: number = inorder.indexOf(rootVal)
+  const result = new TreeNode(rootVal)
+  const remainingPreorder = preorder
+  const remainingInorder = inorder
+  remainingPreorder.shift()
+  const fillLeftTree = (preorderVals: number[], inorderVals: number[], tree: TreeNode): void => {
+    const val: number = preorderVals[0]
+    const inorderIndex: number = inorderVals.indexOf(val)
+    remainingPreorder.shift  
+    tree = new TreeNode(val)
+    fillLeftTree(remainingPreorder,inorderVals.slice(0,inorderIndex), tree.left)
+  }
+  fillLeftTree(remainingPreorder, inorder.slice(0,inorderRootIndex), result.left)
   return result
 }
 
-function leftNode() {}
