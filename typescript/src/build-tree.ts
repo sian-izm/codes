@@ -1,20 +1,57 @@
 import { TreeNode } from "./tree-node-right";
 
 export function buildTree(preorder: number[], inorder: number[]): TreeNode | null {
+  const fillLeftTree = (preorderVals: number[], inorderVals: number[], tree: TreeNode): void => {
+    const val: number = preorderVals[0]
+    const inorderIndex: number = inorderVals.indexOf(val)
+    remainingPreorder.shift()
+    tree.val = val
+
+    if (remainingPreorder.length) {
+      if (inorder.slice(0,inorderIndex-1).length) {
+        tree.left = new TreeNode()
+        fillLeftTree(remainingPreorder, inorder.slice(0,inorderIndex-1), tree.left)
+      }
+      if (inorder.slice(inorderIndex+1).length) {
+        tree.right = new TreeNode()
+        fillRightTree(remainingPreorder, inorder.slice(inorderIndex+1), tree.right)
+      }
+    }
+  }
+  const fillRightTree = (preorderVals: number[], inorderVals: number[], tree: TreeNode): void => {
+    const val: number = preorderVals[0]
+    const inorderIndex: number = inorderVals.indexOf(val)
+
+    remainingPreorder.shift()
+    tree.val = val
+
+    if (remainingPreorder.length) {
+      if (inorder.slice(0,inorderIndex-1).length) {
+        tree.left = new TreeNode()
+        fillLeftTree(remainingPreorder, inorder.slice(0,inorderIndex-1), tree.left)
+      }
+      if (inorder.slice(inorderIndex+1).length) {
+        tree.right = new TreeNode()
+        fillRightTree(remainingPreorder, inorder.slice(inorderIndex+1), tree.right)
+      }
+    }
+  }
+
   const rootVal: number = preorder[0]
   const inorderRootIndex: number = inorder.indexOf(rootVal)
   const result = new TreeNode(rootVal)
   const remainingPreorder = preorder
-  const remainingInorder = inorder
   remainingPreorder.shift()
-  const fillLeftTree = (preorderVals: number[], inorderVals: number[], tree: TreeNode): void => {
-    const val: number = preorderVals[0]
-    const inorderIndex: number = inorderVals.indexOf(val)
-    remainingPreorder.shift  
-    tree = new TreeNode(val)
-    fillLeftTree(remainingPreorder,inorderVals.slice(0,inorderIndex), tree.left)
+
+  if (remainingPreorder.length) {
+    if (inorder.slice(0, inorderRootIndex-1).length) {
+      result.left = new TreeNode()
+      fillLeftTree(remainingPreorder, inorder.slice(0,inorderRootIndex-1), result.left)
+    }
+    if (inorder.slice(inorderRootIndex+1).length) {
+      result.right = new TreeNode()
+      fillRightTree(remainingPreorder, inorder.slice(inorderRootIndex+1), result.right)
+    }
   }
-  fillLeftTree(remainingPreorder, inorder.slice(0,inorderRootIndex), result.left)
   return result
 }
-
