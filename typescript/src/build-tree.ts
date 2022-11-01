@@ -8,9 +8,9 @@ export function buildTree(preorder: number[], inorder: number[]): TreeNode | nul
     tree.val = val
 
     if (remainingPreorder.length) {
-      if (inorder.slice(0,inorderIndex-1).length) {
+      if (inorder.slice(0,inorderIndex).length) {
         tree.left = new TreeNode()
-        fillLeftTree(remainingPreorder, inorder.slice(0,inorderIndex-1), tree.left)
+        fillLeftTree(remainingPreorder, inorder.slice(0,inorderIndex), tree.left)
       }
       if (inorder.slice(inorderIndex+1).length) {
         tree.right = new TreeNode()
@@ -26,9 +26,9 @@ export function buildTree(preorder: number[], inorder: number[]): TreeNode | nul
     tree.val = val
 
     if (remainingPreorder.length) {
-      if (inorder.slice(0,inorderIndex-1).length) {
+      if (inorder.slice(0,inorderIndex).length) {
         tree.left = new TreeNode()
-        fillLeftTree(remainingPreorder, inorder.slice(0,inorderIndex-1), tree.left)
+        fillLeftTree(remainingPreorder, inorder.slice(0,inorderIndex), tree.left)
       }
       if (inorder.slice(inorderIndex+1).length) {
         tree.right = new TreeNode()
@@ -44,11 +44,17 @@ export function buildTree(preorder: number[], inorder: number[]): TreeNode | nul
   remainingPreorder.shift()
 
   if (remainingPreorder.length) {
-    if (inorder.slice(0, inorderRootIndex-1).length) {
+    console.log(inorder)
+    console.log(inorderRootIndex)
+
+    if (inorder.slice(0, inorderRootIndex).length) {
       result.left = new TreeNode()
-      fillLeftTree(remainingPreorder, inorder.slice(0,inorderRootIndex-1), result.left)
+      console.log(remainingPreorder)
+      console.log('fill left')
+      fillLeftTree(remainingPreorder, inorder.slice(0,inorderRootIndex), result.left)
     }
     if (inorder.slice(inorderRootIndex+1).length) {
+      console.log('fill right')
       result.right = new TreeNode()
       fillRightTree(remainingPreorder, inorder.slice(inorderRootIndex+1), result.right)
     }
