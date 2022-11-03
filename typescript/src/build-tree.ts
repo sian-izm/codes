@@ -5,39 +5,45 @@ export function buildTree(preorder: number[], inorder: number[]): TreeNode | nul
     const val: number = preorderVals[0]
     const inorderIndex: number = inorderVals.indexOf(val)
     remainingPreorder.shift()
+    preorderVals.shift()
     tree.val = val
     if (remainingPreorder.length) {
       if (inorder.slice(0,inorderIndex).length) {
         tree.left = new TreeNode()
-        fillLeftTree(remainingPreorder, inorder.slice(0,inorderIndex), tree.left)
+        fillLeftTree(preorderVals, inorder.slice(0,inorderIndex), tree.left)
       }
       console.log('inorder')
       if (inorder.slice(inorderIndex+1).length) {
         console.log('fillrighttree')
         console.log(inorder.slice(inorderIndex+1))
         console.log(remainingPreorder)
+        console.log(preorderVals)
         tree.right = new TreeNode()
-        fillRightTree(remainingPreorder, inorder.slice(inorderIndex+1), tree.right)
+        fillRightTree(preorderVals, inorder.slice(inorderIndex+1), tree.right)
       }
     }
   }
   const fillRightTree = (preorderVals: number[], inorderVals: number[], tree: TreeNode): void => {
-    // console.log('preordervals')
-    // console.log(preorderVals)
+    console.log('called fillright tree')
+    console.log(remainingPreorder)
+    console.log(preorderVals)
     const val: number = preorderVals[0]
     const inorderIndex: number = inorderVals.indexOf(val)
 
     remainingPreorder.shift()
+    preorderVals.shift()
+
+    console.log(val)
     tree.val = val
 
     if (remainingPreorder.length) {
       if (inorder.slice(0,inorderIndex).length) {
         tree.left = new TreeNode()
-        fillLeftTree(remainingPreorder, inorder.slice(0,inorderIndex), tree.left)
+        fillLeftTree(preorderVals, inorder.slice(0,inorderIndex), tree.left)
       }
       if (inorder.slice(inorderIndex+1).length) {
         tree.right = new TreeNode()
-        fillRightTree(remainingPreorder, inorder.slice(inorderIndex+1), tree.right)
+        fillRightTree(preorderVals, inorder.slice(inorderIndex+1), tree.right)
       }
     }
   }
