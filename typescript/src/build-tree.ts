@@ -4,14 +4,15 @@ export function buildTree(preorder: number[], inorder: number[]): TreeNode | nul
   const fillLeftTree = (preorderVals: number[], inorderVals: number[], tree: TreeNode): void => {
     const val: number = preorderVals[0]
     const inorderIndex: number = inorderVals.indexOf(val)
-    remainingPreorder.shift()
+    // remainingPreorder.shift()
     preorderVals.shift()
     tree.val = val
-    if (remainingPreorder.length) {
+    if (preorderVals.length) {
       if (inorder.slice(0,inorderIndex).length) {
         tree.left = new TreeNode()
         fillLeftTree(preorderVals, inorder.slice(0,inorderIndex), tree.left)
       }
+      console.log(val)
       console.log('inorder')
       if (inorder.slice(inorderIndex+1).length) {
         console.log('fillrighttree')
@@ -30,13 +31,13 @@ export function buildTree(preorder: number[], inorder: number[]): TreeNode | nul
     const val: number = preorderVals[0]
     const inorderIndex: number = inorderVals.indexOf(val)
 
-    remainingPreorder.shift()
+    // remainingPreorder.shift()
     preorderVals.shift()
 
     console.log(val)
     tree.val = val
 
-    if (remainingPreorder.length) {
+    if (preorderVals.length) {
       if (inorder.slice(0,inorderIndex).length) {
         tree.left = new TreeNode()
         fillLeftTree(preorderVals, inorder.slice(0,inorderIndex), tree.left)
@@ -64,8 +65,11 @@ export function buildTree(preorder: number[], inorder: number[]): TreeNode | nul
     }
     if (inorder.slice(inorderRootIndex+1).length) {
       result.right = new TreeNode()
+      console.log('root right')
+      console.log(remainingPreorder)
       fillRightTree(remainingPreorder, inorder.slice(inorderRootIndex+1), result.right)
     }
   }
+  console.log(result)
   return result
 }
