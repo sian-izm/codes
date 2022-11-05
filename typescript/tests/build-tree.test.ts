@@ -19,6 +19,6 @@ describe('buildTree', () => {
     const node2 = new TreeNode(20,node3,node4)
     const node1 = new TreeNode(9)
     const result = new TreeNode(3,node1, node2)
-    expect(buildTree(preorder, inorder)).to.equal(result)
+    expect(buildTree(preorder, inorder)).to.deep.equal(result)
   })
 })
