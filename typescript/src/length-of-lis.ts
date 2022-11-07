@@ -28,3 +28,14 @@ export function lengthOfLIS(nums: number[]): number {
   })
   return lis
 }
+
+function LIS(nums: number[], currentLargestNum: number, currentLevel: number): number {
+  nums.shift()
+  if (!nums) { return currentLevel }
+
+  if (nums[0] > currentLargestNum) {
+    return LIS(nums, nums[0], currentLevel + 1)
+  } else {
+    return LIS(nums, currentLargestNum, currentLevel)
+  }
+}
