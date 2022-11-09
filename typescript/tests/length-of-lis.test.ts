@@ -6,8 +6,12 @@ describe('lenghtOfLIS', () => {
   //   expect(lengthOfLIS([10,9,2,5,3,7,101,18])).to.equal(4)
   // })
 
+  // it('should return 4 with 0', () => {
+  //   expect(lengthOfLIS([0,1,0,3,2,3])).to.equal(4)
+  // })
+
   it('should return 4 with 0', () => {
-    expect(lengthOfLIS([0,1,0,3,2,3])).to.equal(4)
+    expect(lengthOfLIS([0,1,3,2,3])).to.equal(4)
   })
 
   // it('should return 1 with same number array', () => {

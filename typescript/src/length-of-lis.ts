@@ -8,6 +8,7 @@ export function lengthOfLIS(nums: number[]): number {
 
     for(let j=index+1; j<=nums.length; j++) {
       console.log('j')
+      console.log(j)
       console.log(nums[j])
       console.log(currentLargestNum)
 
@@ -15,6 +16,7 @@ export function lengthOfLIS(nums: number[]): number {
       if (level > lis) {
         lis = level
       }
+      console.log(lis)
       // if (currentLargestNum < nums[j]) {
       //   console.log('in if')
       //   console.log(j)
@@ -36,7 +38,7 @@ export function lengthOfLIS(nums: number[]): number {
 
 function LIS(nums: number[], currentLargestNum: number, currentLevel: number): number {
   nums.shift()
-  if (!nums) { return currentLevel }
+  if (!nums.length) { return currentLevel }
 
   if (nums[0] > currentLargestNum) {
     return LIS(nums, nums[0], currentLevel + 1)
