@@ -1,6 +1,5 @@
 export function maxSubArray(nums: number[]): number[] {
   let maxArray = nums.slice(-1)
-  const max = maxArray.reduce((partSum, a) => partSum + a, 0)
 
   let numsReverse = nums.reverse()
 
@@ -10,8 +9,18 @@ export function maxSubArray(nums: number[]): number[] {
     }
     let tempMaxArray: number[] = [element]
     if (numsReverse[index-1] > 0) {
+      tempMaxArray.push(numsReverse[index-1])
+      // check next element
+    } else {
 
+    }
+    if (sum(tempMaxArray) > sum(maxArray)) {
+      maxArray = tempMaxArray
     }
   })
   return numsReverse
+}
+
+function sum(array: number[]): number {
+  return array.reduce((partSum, a) => partSum + a, 0)
 }
