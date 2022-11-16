@@ -12,7 +12,7 @@ export function maxSubArray(nums: number[]): number[] {
       tempMaxArray.push(numsReverse[index-1])
       // check next element
     } else {
-
+      // check next element. If it will be bigger than element, append it
     }
     if (sum(tempMaxArray) > sum(maxArray)) {
       maxArray = tempMaxArray
