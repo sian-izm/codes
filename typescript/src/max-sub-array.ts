@@ -2,25 +2,18 @@ export function maxSubArray(nums: number[]): number[] {
   let maxArray = nums.slice(-1)
 
   let numsReverse = nums.reverse()
-
+  let max = 0
+  let sum = 0
   numsReverse.forEach((element, index) => {
-    if (element < 0 ){
-      return;
-    }
-    let tempMaxArray: number[] = [element]
-    if (numsReverse[index-1] > 0) {
-      tempMaxArray.push(numsReverse[index-1])
-      // check next element
+    sum += element
+
+    if (sum > max ) {
+      max += sum
     } else {
-      // check next element. If it will be bigger than element, append it
+      if (sum < 0 ) {
+        sum = 0
+      }
     }
-    if (sum(tempMaxArray) > sum(maxArray)) {
-      maxArray = tempMaxArray
-    }
-  })
   return numsReverse
 }
 
-function sum(array: number[]): number {
-  return array.reduce((partSum, a) => partSum + a, 0)
-}
