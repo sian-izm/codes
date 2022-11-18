@@ -14,6 +14,7 @@ export function maxSubArray(nums: number[]): number[] {
         sum = 0
       }
     }
+  })
   return numsReverse
 }
 
